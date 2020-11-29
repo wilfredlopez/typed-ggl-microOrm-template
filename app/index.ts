@@ -14,7 +14,6 @@ import { ApolloServer } from "apollo-server-express";
 import MicroOrmOptions from "./mikro-orm.config";
 import { MyRequest } from "./interfaces";
 import { formatArgumentValidationErrors } from "./validation";
-import { ExpressContext } from "apollo-server-express/dist/ApolloServer";
 
 export const DI = {} as {
   orm: MikroORM;
