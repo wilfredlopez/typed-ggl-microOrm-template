@@ -11,3 +11,8 @@ export interface MyRequest<
   email?: string;
   admin?: User;
 }
+
+export enum UserRoles {
+  "CLIENT" = "CLIENT",
+  "ADMIN" = "ADMIN",
+}

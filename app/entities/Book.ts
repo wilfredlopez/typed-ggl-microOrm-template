@@ -4,22 +4,44 @@ import {
   Entity,
   ManyToMany,
   ManyToOne,
+  PrimaryKey,
   Property,
+  SerializedPrimaryKey,
 } from "@mikro-orm/core";
 import { User, BookTag, Publisher } from "./index";
-import { BaseEntity } from "./BaseEntity";
+import { ObjectType, Field, ID } from "type-graphql";
+import { ObjectId } from "@mikro-orm/mongodb";
 
+@ObjectType()
 @Entity()
-export class Book extends BaseEntity {
+export class Book {
+  @PrimaryKey()
+  @Field(() => ID) //type-graphql
+  _id!: ObjectId;
+
+  @Field() //type-graphql
+  @SerializedPrimaryKey()
+  id!: string;
+
+  @Field(() => Date)
+  @Property()
+  createdAt = new Date();
+
+  @Field(() => Date)
+  @Property({ onUpdate: () => new Date() })
+  updatedAt = new Date();
+  @Field()
   @Property()
   title: string;
 
+  @Field(() => User)
   @ManyToOne()
   author: User;
 
   @ManyToOne(() => Publisher, { cascade: [Cascade.PERSIST, Cascade.REMOVE] })
   publisher?: Publisher;
 
+  @Field(() => [BookTag])
   @ManyToMany(() => BookTag)
   tags = new Collection<BookTag>(this);
 
@@ -33,7 +55,6 @@ export class Book extends BaseEntity {
   metaArrayOfStrings?: string[];
 
   constructor(title: string, author: User) {
-    super();
     this.title = title;
     this.author = author;
   }

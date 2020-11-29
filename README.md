@@ -5,23 +5,9 @@
 3. Run via `yarn dev` (watch mode)
 4. Example API is running on localhost:5000
 
-Available routes:
+### GraphQl Playground
 
-```
-POST    /user        creates new user
-POST    /login       logs in user with email and password and return token.
-GET     /user        finds all users
-PUT     /user/:id    updates user by id
-GET     /user/:id    finds user by id
-GET     /user/auth/me    finds the current user (expects headers `Authorization` with Bearer Token)
-```
-
-```
-POST    /book          creates new book
-GET     /book          finds all books
-GET     /book/:id      finds book by id
-PUT     /book/:id      updates book by id
-```
+Playground will be available at http://localhost:5000/graphql
 
 #### KILL Docker Mongo DB
 
