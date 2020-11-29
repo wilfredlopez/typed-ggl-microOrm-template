@@ -1,0 +1,85 @@
+# **************
+# EXAMPLE CRUD
+# ***************
+
+### WELCOME
+GET http://localhost:5000/ 
+
+
+# **************
+# USER CONTROLLER
+# ***************
+
+
+### Register
+POST http://localhost:5000/user
+Content-Type: application/json
+
+{
+    "firstname":"wilfred",
+    "lastname": "lopez",
+    "email": "test@test.com",
+    "password":"password"
+}
+
+### Login
+POST http://localhost:5000/user/login
+Content-Type: application/json
+
+{
+    "email": "test@test.com",
+    "password":"newpassword"
+}
+
+### TOKEN
+@Token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZmFjNjY1MTY1NTI4NzhkNjAyZTg4YWQiLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJpYXQiOjE2MDUxMzQwOTksImV4cCI6MTYwNTIyMDQ5OX0.R-aHpZElTRlpmAh-px_suxMlPbwuuvJlJALts8fh4k8
+
+### Current User
+### Make sure to get the token by login in.
+### Add the token to the Token Variable above
+GET http://localhost:5000/user/auth/me
+Authorization: Bearer {{Token}}
+
+### ALL USERS
+GET http://localhost:5000/user
+
+### Update User
+PUT http://localhost:5000/user/5fac66516552878d602e88ad
+Content-Type: application/json
+
+{
+    "firstname": "Wilfred"
+}
+
+### Find User By ID
+GET http://localhost:5000/user/5fac66516552878d602e88ad
+
+
+# **************
+# BOOK CONTROLLER
+# ***************
+
+### Create Book
+POST http://localhost:5000/book
+Authorization: Bearer {{Token}}
+Content-Type: application/json
+
+{
+    "title": "One Single Book",
+    "author": "5fac66516552878d602e88ad"
+}
+
+### All Books
+GET http://localhost:5000/book
+
+### Book by Id
+GET http://localhost:5000/book/5fac7392b88c4e4305c78784
+
+### Update Book by Id
+PUT http://localhost:5000/book/5fac7392b88c4e4305c78784
+Content-Type: application/json
+
+{
+    "title": "The Greatest",
+    "tags": ["Good"]
+}

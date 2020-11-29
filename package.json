@@ -1,0 +1,38 @@
+{
+  "name": "micrko-orm-typescript",
+  "version": "0.0.1",
+  "description": "Example integration of MikroORM into express (in typescript) with mongodb",
+  "author": "Wilfred Lopez",
+  "license": "MIT",
+  "scripts": {
+    "start": "node dist/index",
+    "dev": "tsc-watch --onSuccess \"node dist/index\""
+  },
+  "dependencies": {
+    "@mikro-orm/core": "^4.0.0-rc.6",
+    "@mikro-orm/mongo-highlighter": "^1.0.0",
+    "@mikro-orm/mongodb": "^4.0.0-rc.6",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-promise-router": "^4.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "tsc-watch": "^4.2.9",
+    "typescript": "4.0.2"
+  },
+  "devDependencies": {
+    "@mikro-orm/cli": "^4.0.0-rc.6",
+    "@types/bcryptjs": "^2.4.2",
+    "@types/express": "^4.17.9",
+    "@types/express-promise-router": "^3.0.0",
+    "@types/jsonwebtoken": "^8.5.0",
+    "ts-node": "^9.0.0"
+  },
+  "mikro-orm": {
+    "useTsNode": true,
+    "configPaths": [
+      "./app/mikro-orm.config.ts",
+      "./dist/mikro-orm.config.js"
+    ]
+  }
+}
